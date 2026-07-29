@@ -150,12 +150,10 @@ while True:
 client.close()
 ```
 ## OUTPUT:
-server.py
-<img width="461" height="263" alt="image" src="https://github.com/user-attachments/assets/a30ef2d7-5ef9-4994-8a39-95b8a2692410" />
+server.py:<img width="461" height="263" alt="image" src="https://github.com/user-attachments/assets/a30ef2d7-5ef9-4994-8a39-95b8a2692410" />
 
 
-client.py
-<img width="476" height="233" alt="image" src="https://github.com/user-attachments/assets/36e15bc0-a7f6-4597-8688-b648cec2d217" />
+client.py:<img width="476" height="233" alt="image" src="https://github.com/user-attachments/assets/36e15bc0-a7f6-4597-8688-b648cec2d217" />
 
 
 ## Result:
