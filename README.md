@@ -151,7 +151,6 @@ client.close()
 ```
 ## OUTPUT:
 server.py
-
 <img width="461" height="263" alt="image" src="https://github.com/user-attachments/assets/a30ef2d7-5ef9-4994-8a39-95b8a2692410" />
 
 
