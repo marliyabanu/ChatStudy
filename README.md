@@ -72,6 +72,91 @@ User authentication mechanisms are essential to ensure secure and authorized acc
 Client-server chat applications are versatile tools that facilitate real-time communication between users over a network. They incorporate various components, including server-side and client-side elements, and must consider factors such as security, scalability, and concurrency. As technology continues to advance, client-server chat applications remain integral for collaborative communication in various domains.
 
 Client-server chat applications are foundational to real-time communication over networks. They incorporate principles of socket programming, communication protocols, and security mechanisms to provide a seamless user experience. Understanding the basics of client-server chat applications is essential for developers involved in networked application development, as they form the backbone of various collaborative communication systems. As technology evolves, chat applications continue to adapt, incorporating new features and technologies to enhance user interaction and connectivity.
+## SERVER:
+
+```
+import socket
+
+HOST = "127.0.0.1"
+PORT = 12345
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((HOST, PORT))
+server.listen(1)
+
+print("Server is waiting for connection...")
+
+conn, addr = server.accept()
+print(f"Connected by {addr}")
+
+while True:
+    # Receive message from client
+    client_msg = conn.recv(1024).decode()
+
+    if not client_msg:
+        break
+
+    print("Client:", client_msg)
+
+    if client_msg.lower() == "exit":
+        print("Client disconnected.")
+        break
+
+    # Send reply
+    server_msg = input("Server: ")
+    conn.send(server_msg.encode())
+
+    if server_msg.lower() == "exit":
+        print("Server closed the chat.")
+        break
+
+conn.close()
+server.close()
+```
+## CLIENT:
+
+```
+import socket
+
+HOST = "127.0.0.1"
+PORT = 12345
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect((HOST, PORT))
+
+print("Connected to server.")
+
+while True:
+    # Send message
+    client_msg = input("Client: ")
+    client.send(client_msg.encode())
+
+    if client_msg.lower() == "exit":
+        print("Disconnected.")
+        break
+
+    # Receive reply
+    server_msg = client.recv(1024).decode()
+
+    if not server_msg:
+        break
+
+    print("Server:", server_msg)
+
+    if server_msg.lower() == "exit":
+        print("Server closed the chat.")
+        break
+
+client.close()
+```
+## OUTPUT:
+server.py
+
+<img width="461" height="263" alt="image" src="https://github.com/user-attachments/assets/a30ef2d7-5ef9-4994-8a39-95b8a2692410" />
+
+
+client.py
+<img width="476" height="233" alt="image" src="https://github.com/user-attachments/assets/36e15bc0-a7f6-4597-8688-b648cec2d217" />
 
 
 ## Result:
